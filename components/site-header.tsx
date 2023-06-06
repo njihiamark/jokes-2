@@ -13,13 +13,19 @@ export function SiteHeader() {
       <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
         <MainNav items={siteConfig.mainNav} />
         <div className="flex flex-1 items-center justify-end space-x-4">
-          <nav className="flex items-center space-x-1">
+          <nav className="flex items-center space-x-2">
             <ThemeToggle />
             <Button
               className={buttonVariants()}
             >
               Logout
               <Icons.logout className="ml-2 h-5 w-5" />
+            </Button>
+            <Button
+              className={buttonVariants()}
+            >
+              Login
+              <Icons.login className="ml-2 h-5 w-5" />
             </Button>
           </nav>
         </div>
