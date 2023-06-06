@@ -7,10 +7,7 @@ import { Button, buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 
 export function LoginButton() {
-  const { accessToken, setAccessToken } = useAuthStore((state) => ({
-    accessToken: state.accessToken,
-    setAccessToken: state.setAccessToken,
-  }))
+  const { accessToken, setAccessToken } = useAuthStore()
 
   const [isLogin, setIsLogin] = useState<boolean>(false)
 
