@@ -1,4 +1,5 @@
 import { LoginButton } from "@/components/login-button"
+import { LoginRedirect } from "@/components/login-redirect"
 
 export default function IndexPage() {
   return (
@@ -9,6 +10,7 @@ export default function IndexPage() {
         </h1>
       </div>
       <LoginButton />
+      <LoginRedirect />
     </section>
   )
 }

@@ -1,12 +1,14 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 import useAuthStore from "@/stores/auth"
 
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 
 export function LoginButton() {
+  const router = useRouter()
   const { accessToken, setAccessToken } = useAuthStore()
 
   const [isLogin, setIsLogin] = useState<boolean>(false)
@@ -15,12 +17,19 @@ export function LoginButton() {
     setIsLogin(accessToken)
   }, [accessToken])
 
+  function handleLogin() {
+	setAccessToken(true)
+	if (location.pathname === "/"){
+		router.push("/jokes")
+	}
+  }
+
   return (
     <>
       <Button
         className={buttonVariants()}
         onClick={() => {
-          accessToken ? setAccessToken(false) : setAccessToken(true)
+          accessToken ? setAccessToken(false) : handleLogin()
         }}
       >
         {isLogin ? <span>Logout</span> : <span>Login</span>}
