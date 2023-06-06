@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 import Link from "next/link"
 
@@ -5,15 +7,17 @@ import { NavItem } from "@/types/nav"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
+import useAuthStore from "@/stores/auth"
 
 interface MainNavProps {
   items?: NavItem[]
 }
 
 export function MainNav({ items }: MainNavProps) {
+  const { accessToken } = useAuthStore()
   return (
     <div className="flex gap-6 md:gap-10">
-      <Link href="/jokes" className="flex items-center space-x-1">
+      <Link href={accessToken ? "/jokes" : "/"} className="flex items-center space-x-1">
         <Icons.logo className="h-6 w-6" />
         <span className="inline-block font-bold">{siteConfig.name}</span>
       </Link>
