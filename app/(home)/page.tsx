@@ -1,5 +1,4 @@
-import { Button, buttonVariants } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
+import { LoginButton } from "@/components/login-button"
 
 export default function IndexPage() {
   return (
@@ -9,10 +8,7 @@ export default function IndexPage() {
           Jokes is an App that will make you laugh!
         </h1>
       </div>
-      <Button className={buttonVariants()}>
-        Login
-        <Icons.login className="ml-2 h-5 w-5" />
-      </Button>
+      <LoginButton />
     </section>
   )
 }

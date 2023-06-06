@@ -1,11 +1,9 @@
-import Link from "next/link"
+import { LoginButton } from "@/components/login-button"
 
 import { siteConfig } from "@/config/site"
-import { Button } from "@/components/ui/button";
-import { buttonVariants } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
+
 
 export function SiteHeader() {
   return (
@@ -15,18 +13,7 @@ export function SiteHeader() {
         <div className="flex flex-1 items-center justify-end space-x-4">
           <nav className="flex items-center space-x-2">
             <ThemeToggle />
-            <Button
-              className={buttonVariants()}
-            >
-              Logout
-              <Icons.logout className="ml-2 h-5 w-5" />
-            </Button>
-            <Button
-              className={buttonVariants()}
-            >
-              Login
-              <Icons.login className="ml-2 h-5 w-5" />
-            </Button>
+            <LoginButton />
           </nav>
         </div>
       </div>
