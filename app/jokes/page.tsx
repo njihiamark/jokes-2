@@ -1,4 +1,4 @@
-import { JokesTable } from "@/components/jokes-table"
+import { JokesTable } from "@/components/jokes/jokes-table"
 
 export default function JokesPage() {
   return (

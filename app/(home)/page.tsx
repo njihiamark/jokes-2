@@ -1,5 +1,5 @@
-import { LoginButton } from "@/components/login-button"
-import { LoginRedirect } from "@/components/login-redirect"
+import { LoginButton } from "@/components/auth/login-button"
+import { LoginRedirect } from "@/components/auth/login-redirect"
 
 export default function IndexPage() {
   return (

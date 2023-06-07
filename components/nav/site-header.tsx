@@ -1,8 +1,8 @@
-import { LoginButton } from "@/components/login-button"
+import { LoginButton } from "@/components/auth/login-button"
 
 import { siteConfig } from "@/config/site"
-import { MainNav } from "@/components/main-nav"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { MainNav } from "@/components/nav/main-nav"
+import { ThemeToggle } from "@/components/themes/theme-toggle"
 
 
 export function SiteHeader() {

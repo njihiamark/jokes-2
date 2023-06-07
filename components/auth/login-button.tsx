@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import useAuthStore from "@/stores/auth"
 
 import { Button, buttonVariants } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
+import { Icons } from "@/components/icons/icons"
 
 export function LoginButton() {
   const router = useRouter()

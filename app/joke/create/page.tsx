@@ -1,4 +1,4 @@
-import { JokesForm } from "@/components/jokes-form"
+import { JokesForm } from "@/components/jokes/jokes-form"
 
 export default function JokesPage() {
   return (

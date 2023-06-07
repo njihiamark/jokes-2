@@ -1,7 +1,7 @@
 "use client"
 
 import useAuthStore from "@/stores/auth"
-import { LoginRequired } from "./login-required"
+import { LoginRequired } from "@/components/auth/login-required"
 import { useEffect, useState } from "react"
 
 export function JokesTable() {
