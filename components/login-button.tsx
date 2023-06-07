@@ -11,7 +11,7 @@ export function LoginButton() {
   const router = useRouter()
   const { accessToken, setAccessToken } = useAuthStore()
 
-  const [isLogin, setIsLogin] = useState<boolean>(false)
+  const [isLogin, setIsLogin] = useState<boolean>(true)
 
   useEffect(() => {
     setIsLogin(accessToken)

@@ -1,13 +1,12 @@
 "use client"
 
 import useAuthStore from "@/stores/auth"
-
 import { LoginRequired } from "./login-required"
 import { useEffect, useState } from "react"
 
 export function JokesTable() {
   const { accessToken } = useAuthStore()
-  const [isLogin, setIsLogin] = useState<boolean>(false)
+  const [isLogin, setIsLogin] = useState<boolean>(true)
 
   useEffect(() => {
     setIsLogin(accessToken)
