@@ -11,9 +11,13 @@ export function convertKeysToPascalCase(obj: { [key: string]: any }): { [key: st
 
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      const pascalCaseKey = key.replace(/(\w)(\w*)/g, (_, firstChar, restOfString) => {
-        return firstChar.toUpperCase() + restOfString.toLowerCase();
-      });
+      let pascalCaseKey = key;
+      if (key.toLowerCase() !== "createdat") {
+        pascalCaseKey = key.charAt(0).toUpperCase() + key.slice(1);
+      }
+      if (key == "createdAt") {
+        pascalCaseKey = key.charAt(0).toUpperCase() + key.slice(1);
+      }
       convertedObj[pascalCaseKey] = obj[key];
     }
   }
