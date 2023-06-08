@@ -1,3 +1,4 @@
+import { type } from "os"
 import * as z from "zod"
 
 export const JokeSchema = z.object({
@@ -53,3 +54,5 @@ export const JokeSchema = z.object({
 	  .int()
 	  .positive(),
   })
+
+  export type JokeData = z.infer<typeof JokeSchema>

@@ -18,13 +18,14 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { JokesFormProps, UseCase } from "@/types/jokes-form"
+import { JokesFormProps, UseCase, EditJokeProps } from "@/types/jokes-form"
 
 
 
-export function JokesForm({ useCase, submitFunction }: JokesFormProps) {
+export function JokesForm({ useCase, submitFunction, joke }: EditJokeProps<UseCase.EDIT> | JokesFormProps) {
   const form = useForm<z.infer<typeof JokeSchema>>({
     resolver: zodResolver(JokeSchema),
+    defaultValues: useCase === UseCase.EDIT ? { ...joke } : undefined,
   })
 
   return  (

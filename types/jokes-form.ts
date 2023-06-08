@@ -9,4 +9,11 @@ export enum UseCase {
 export interface JokesFormProps {
 	useCase: UseCase,
 	submitFunction: (data: z.infer<typeof JokeSchema>) => void
-  }
+	joke?: {}
+}
+
+export type EditJokeProps<T extends JokesFormProps["useCase"]> = T extends UseCase.EDIT ? {
+	useCase: UseCase,
+	submitFunction: (data: z.infer<typeof JokeSchema>) => void,
+	joke: z.infer<typeof JokeSchema>
+} : never
