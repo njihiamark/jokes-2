@@ -8,6 +8,8 @@ import {
   ArrowLeft,
   Trash2 as Trash,
   Laugh,
+  Edit,
+  Send,
   type Icon as LucideIcon,
 } from "lucide-react"
 
@@ -22,6 +24,8 @@ export const Icons = {
   back: ArrowLeft,
   delete: Trash,
   logo: Laugh,
+  edit: Edit,
+  send: Send,
   gitHub: (props: LucideProps) => (
     <svg viewBox="0 0 438.549 438.549" {...props}>
       <path
