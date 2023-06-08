@@ -12,6 +12,7 @@ import { JokeId } from "@/types/joke"
 import { UseCase } from "@/types/jokes-form"
 import { convertKeysToPascalCase } from "@/lib/utils"
 import { Button, buttonVariants } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 import {
   Dialog,
   DialogContent,
@@ -25,7 +26,6 @@ import { toast } from "@/components/ui/use-toast"
 import { LoginRequired } from "@/components/auth/login-required"
 import { Icons } from "@/components/icons/icons"
 
-import { Card, CardContent } from "../ui/card"
 import { JokesForm } from "./jokes-form"
 
 const getJoke = async ({ jokeId }: JokeId) => {
@@ -73,12 +73,36 @@ export function EditJoke({ jokeId }: JokeId) {
     }
   )
 
+  const { mutate: deleteJoke } = useMutation(
+    async () =>
+      await axios.delete(`https://retoolapi.dev/zu9TVE/jokes/${jokeId}`),
+    {
+      onError: (error: any) => {
+        console.log(error)
+        toast({
+          itemID: "delete-joke-toast",
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "There was a problem deleting this joke.",
+        })
+      },
+      onSuccess: () => {
+        toast({
+          itemID: "delete-joke-toast",
+          title: "Joke deleted!",
+          description: "Your joke has been deleted.",
+        })
+		router.replace("/jokes")
+      },
+    }
+  )
+
   function onSubmit(data: JokeData) {
     mutate(data)
   }
 
   function deleteHandler() {
-    console.log("delete")
+    deleteJoke()
   }
 
   if (!isLogin) return <LoginRequired />
@@ -127,8 +151,7 @@ export function EditJoke({ jokeId }: JokeId) {
         <DialogHeader>
           <DialogTitle>Are you sure absolutely sure?</DialogTitle>
           <DialogDescription>
-            This action cannot be undone. This will permanently delete your joke
-            and remove it from our servers.
+            This action cannot be undone. This will permanently delete your joke.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
