@@ -13,6 +13,7 @@ import { LoginRequired } from "@/components/auth/login-required"
 import { convertKeysToPascalCase } from "@/lib/utils"
 
 import { JokesForm } from "./jokes-form"
+import { Card, CardContent } from "../ui/card"
 
 const getJoke = async ({ jokeId }: JokeId) => {
   const response = await axios.get(
@@ -66,6 +67,16 @@ export function EditJoke({ jokeId }: JokeId) {
 
   if (isLoading) {
     return <div>Loading...</div>
+  }
+
+  if (!data) {
+	return(
+		<Card className="w-full sm:w-6/12">
+          <CardContent className="p-6">
+            <b>This joke does not exist.<br/> It has most likely been deleted!</b>
+          </CardContent>
+        </Card>
+	)
   }
 
   const jokeData = convertKeysToPascalCase(data)
