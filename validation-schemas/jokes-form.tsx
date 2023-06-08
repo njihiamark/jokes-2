@@ -1,7 +1,7 @@
 import * as z from "zod"
 
 export const JokeSchema = z.object({
-	title: z
+	Title: z
 	  .string({
 		required_error: "Title is required",
 	  })
@@ -13,7 +13,7 @@ export const JokeSchema = z.object({
 	  .max(200, {
 		message: "Title must not be longer than 200 characters",
 	  }),
-	body: z
+	Body: z
 	  .string({
 		required_error: "Body is required",
 	  })
@@ -25,14 +25,14 @@ export const JokeSchema = z.object({
 	  .max(500, {
 		message: "Body must not be longer than 500 characters",
 	  }),
-	views: z
+	Views: z
 	  .number()
 	  .gt(0, {
 		message: "Number of views are required",
 	  })
 	  .int()
 	  .positive(),
-	author: z
+	Author: z
 	  .string({
 		required_error: "Author is required",
 	  })
@@ -43,7 +43,7 @@ export const JokeSchema = z.object({
 	  .max(200, {
 		message: "Author must be at least 5 characters",
 	  }),
-	createdat: z
+	CreatedAt: z
 	  .number({
 		required_error: "A unix timestamp is required",
 	  })

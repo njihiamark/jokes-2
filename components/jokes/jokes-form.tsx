@@ -38,7 +38,7 @@ export function JokesForm({ useCase, submitFunction, joke }: EditJokeProps<UseCa
               >
                 <FormField
                   control={form.control}
-                  name="title"
+                  name="Title"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Title</FormLabel>
@@ -55,7 +55,7 @@ export function JokesForm({ useCase, submitFunction, joke }: EditJokeProps<UseCa
                 />
                 <FormField
                   control={form.control}
-                  name="body"
+                  name="Body"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Body</FormLabel>
@@ -75,14 +75,14 @@ export function JokesForm({ useCase, submitFunction, joke }: EditJokeProps<UseCa
                 />
                 <FormField
                   control={form.control}
-                  name="views"
+                  name="Views"
                   render={() => (
                     <FormItem>
                       <FormLabel>Views</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
-                          {...form.register("views", { valueAsNumber: true })}
+                          {...form.register("Views", { valueAsNumber: true })}
                           defaultValue={0}
                           placeholder="100"
                         />
@@ -96,7 +96,7 @@ export function JokesForm({ useCase, submitFunction, joke }: EditJokeProps<UseCa
                 />
                 <FormField
                   control={form.control}
-                  name="author"
+                  name="Author"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Author</FormLabel>
@@ -112,7 +112,7 @@ export function JokesForm({ useCase, submitFunction, joke }: EditJokeProps<UseCa
                 />
                 <FormField
                   control={form.control}
-                  name="createdat"
+                  name="CreatedAt"
                   render={() => (
                     <FormItem>
                       <FormLabel>CreatedAt</FormLabel>
@@ -120,7 +120,7 @@ export function JokesForm({ useCase, submitFunction, joke }: EditJokeProps<UseCa
                         <Input
                           placeholder="1686158256"
                           type="number"
-                          {...form.register("createdat", {
+                          {...form.register("CreatedAt", {
                             valueAsNumber: true,
                           })}
                           defaultValue={0}

@@ -10,7 +10,7 @@ import { JokeId } from "@/types/joke"
 import { UseCase } from "@/types/jokes-form"
 import { toast } from "@/components/ui/use-toast"
 import { LoginRequired } from "@/components/auth/login-required"
-import { convertKeysToLowerCase } from "@/lib/utils"
+import { convertKeysToPascalCase } from "@/lib/utils"
 
 import { JokesForm } from "./jokes-form"
 
@@ -68,7 +68,7 @@ export function EditJoke({ jokeId }: JokeId) {
     return <div>Loading...</div>
   }
 
-  const jokeData = convertKeysToLowerCase(data)
+  const jokeData = convertKeysToPascalCase(data)
 
   return (
         <JokesForm
