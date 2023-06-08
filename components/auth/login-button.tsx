@@ -33,7 +33,7 @@ export function LoginButton() {
         }}
       >
         {isLogin ? <span>Logout</span> : <span>Login</span>}
-        {accessToken ? (
+        {isLogin ? (
           <Icons.logout className="ml-2 h-5 w-5" />
         ) : (
           <Icons.login className="ml-2 h-5 w-5" />

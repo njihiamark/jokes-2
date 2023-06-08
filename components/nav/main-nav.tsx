@@ -8,6 +8,7 @@ import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons/icons"
 import useAuthStore from "@/stores/auth"
+import { useEffect, useState } from "react"
 
 interface MainNavProps {
   items?: NavItem[]
@@ -15,9 +16,15 @@ interface MainNavProps {
 
 export function MainNav({ items }: MainNavProps) {
   const { accessToken } = useAuthStore()
+  const [isLogin, setIsLogin] = useState<boolean>(true)
+
+  useEffect(() => {
+    setIsLogin(accessToken)
+  }, [accessToken])
+
   return (
     <div className="flex gap-6 md:gap-10">
-      <Link href={accessToken ? "/jokes" : "/"} className="flex items-center space-x-1">
+      <Link href={isLogin ? "/jokes" : "/"} className="flex items-center space-x-1">
         <Icons.logo className="h-6 w-6" />
         <span className="inline-block font-bold">{siteConfig.name}</span>
       </Link>
