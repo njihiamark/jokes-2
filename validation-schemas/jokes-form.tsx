@@ -1,4 +1,3 @@
-import { type } from "os"
 import * as z from "zod"
 
 export const JokeSchema = z.object({
@@ -44,7 +43,7 @@ export const JokeSchema = z.object({
 	  .max(200, {
 		message: "Author must be at least 5 characters",
 	  }),
-	createdAt: z
+	createdat: z
 	  .number({
 		required_error: "A unix timestamp is required",
 	  })

@@ -43,7 +43,6 @@ export function CreateJoke() {
           title: "Joke created!",
           description: "Your joke has been created.",
         })
-        console.log(data.data)
         router.replace("/jokes")
       },
     }

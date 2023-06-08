@@ -1,34 +1,80 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import * as z from "zod"
 import useAuthStore from "@/stores/auth"
+import { JokeData } from "@/validation-schemas/jokes-form"
+import { useMutation, useQuery } from "@tanstack/react-query"
+import axios from "axios"
 
+import { JokeId } from "@/types/joke"
 import { UseCase } from "@/types/jokes-form"
+import { toast } from "@/components/ui/use-toast"
 import { LoginRequired } from "@/components/auth/login-required"
+import { convertKeysToLowerCase } from "@/lib/utils"
 
 import { JokesForm } from "./jokes-form"
-import { JokeSchema } from "@/validation-schemas/jokes-form"
-import { toast } from "../ui/use-toast"
 
-export function EditJoke() {
+const getJoke = async ({ jokeId }: JokeId) => {
+  const response = await axios.get(
+    `https://retoolapi.dev/zu9TVE/jokes/${jokeId}`
+  )
+  return response?.data
+}
+
+export function EditJoke({ jokeId }: JokeId) {
   const { accessToken } = useAuthStore()
   const [isLogin, setIsLogin] = useState<boolean>(true)
+
   useEffect(() => {
     setIsLogin(accessToken)
   }, [accessToken])
 
-  function onSubmit(data: z.infer<typeof JokeSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    })
+  const { data, isLoading } = useQuery({
+    queryFn: () => getJoke({ jokeId }),
+    queryKey: ["joke", jokeId],
+  })
+
+  const { mutate } = useMutation(
+    async (data: JokeData) =>
+      await axios.put(`https://retoolapi.dev/zu9TVE/jokes/${jokeId}`, data),
+    {
+      onError: (error: any) => {
+        console.log(error)
+        toast({
+          itemID: "joke-toast",
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "There was a problem with your request.",
+        })
+      },
+      onSuccess: (data) => {
+        toast({
+          itemID: "joke-toast",
+          title: "Joke updated!",
+          description: "Your joke has been updated.",
+        })
+        console.log(data.data)
+      },
+    }
+  )
+
+  function onSubmit(data: JokeData) {
+    mutate(data)
   }
+
+  if(!isLogin) return <LoginRequired />
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  const jokeData = convertKeysToLowerCase(data)
+
   return (
-    <>{isLogin ? <JokesForm useCase={UseCase.EDIT} submitFunction={onSubmit} joke={{title:"dfdff", body: "dffdf", views: 2, author: "dsds", createdAt: 2}} /> : <LoginRequired />}</>
+        <JokesForm
+          useCase={UseCase.EDIT}
+          submitFunction={onSubmit}
+          joke={{...jokeData}}
+        />
   )
 }
