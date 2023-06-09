@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import useAuthStore from "@/stores/auth"
 import { JokeData } from "@/validation-schemas/jokes-form"
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import axios from "axios"
 
 import { UseCase } from "@/types/jokes-form"
@@ -18,6 +18,7 @@ import { Icons } from "../icons/icons"
 export function CreateJoke() {
   const { accessToken } = useAuthStore()
   const [isLogin, setIsLogin] = useState<boolean>(true)
+  const queryClient = useQueryClient();
   useEffect(() => {
     setIsLogin(accessToken)
   }, [accessToken])
@@ -38,6 +39,7 @@ export function CreateJoke() {
         })
       },
       onSuccess: (data) => {
+        queryClient.invalidateQueries(["posts"]);
         toast({
           itemID: "joke-toast",
           title: "Joke created!",

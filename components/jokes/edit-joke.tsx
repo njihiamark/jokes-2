@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import useAuthStore from "@/stores/auth"
 import { JokeData } from "@/validation-schemas/jokes-form"
 import * as DialogPrimitive from "@radix-ui/react-dialog"
-import { useMutation, useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery, useQueryClient  } from "@tanstack/react-query"
 import axios from "axios"
 
 import { JokeId } from "@/types/joke"
@@ -46,6 +46,7 @@ export function EditJoke({ jokeId }: JokeId) {
   const { accessToken } = useAuthStore()
   const [isLogin, setIsLogin] = useState<boolean>(true)
   const router = useRouter()
+  const queryClient = useQueryClient();
 
   useEffect(() => {
     setIsLogin(accessToken)
@@ -70,6 +71,7 @@ export function EditJoke({ jokeId }: JokeId) {
         })
       },
       onSuccess: (data) => {
+        queryClient.invalidateQueries(["jokes"]);
         toast({
           itemID: "joke-toast",
           title: "Joke updated!",
