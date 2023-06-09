@@ -10,6 +10,7 @@ import {
   Laugh,
   Edit,
   Send,
+  LucideMessageSquare,
   type Icon as LucideIcon,
 } from "lucide-react"
 
@@ -26,6 +27,7 @@ export const Icons = {
   logo: Laugh,
   edit: Edit,
   send: Send,
+  add_joke: LucideMessageSquare,
   gitHub: (props: LucideProps) => (
     <svg viewBox="0 0 438.549 438.549" {...props}>
       <path

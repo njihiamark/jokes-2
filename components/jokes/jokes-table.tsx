@@ -1,12 +1,18 @@
 "use client"
 
-import useAuthStore from "@/stores/auth"
-import { LoginRequired } from "@/components/auth/login-required"
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
+import useAuthStore from "@/stores/auth"
+
+import { Button } from "@/components/ui/button"
+import { LoginRequired } from "@/components/auth/login-required"
+import { Icons } from "@/components/icons/icons"
 
 export function JokesTable() {
   const { accessToken } = useAuthStore()
   const [isLogin, setIsLogin] = useState<boolean>(true)
+
+  const router = useRouter()
 
   useEffect(() => {
     setIsLogin(accessToken)
@@ -14,9 +20,14 @@ export function JokesTable() {
   return (
     <>
       {isLogin ? (
-        <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
-          Jokes table comes here!
-        </h1>
+        <>
+          <div className="mb-4 flex w-full sm:mt-0 sm:w-6/12">
+            <Button onClick={() => router.push("/joke/create")}>
+              <span>Add joke</span>
+              <Icons.add_joke className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
+        </>
       ) : (
         <LoginRequired />
       )}
