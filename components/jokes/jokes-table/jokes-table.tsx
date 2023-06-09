@@ -18,7 +18,7 @@ import { DataTable } from "./data-table"
 const getJokes = async () => {
   try {
     const response = await axios.get(
-      "https://retoolapi.dev/zu9TVE/jokes?_sort=views&_order=desc"
+      "https://retoolapi.dev/zu9TVE/jokes?_sort=CreatedAt&_order=desc"
     )
     return response?.data
   } catch (error) {

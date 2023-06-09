@@ -11,7 +11,9 @@ export function convertKeysToPascalCase(obj: { [key: string]: any }): { [key: st
   }
 
   if (Array.isArray(obj)) {
-    return obj.map((item) => convertKeysToPascalCase(item));
+    const items = obj.map((item) => convertKeysToPascalCase(item));
+    const sortedItems = items.sort((a, b) => a.CreatedAt - b.CreatedAt);
+    return sortedItems;
   }
 
   const convertedObj: { [key: string]: any } = {};
@@ -30,4 +32,29 @@ export function convertKeysToPascalCase(obj: { [key: string]: any }): { [key: st
   }
 
   return convertedObj;
+}
+
+export function convertUnixTimestamp(timestamp: number): string {
+  const length = Math.floor(Math.log10(timestamp)) + 1;
+
+  let date: Date;
+
+  if (length === 10) {
+    // Unix timestamp in seconds
+    date = new Date(timestamp * 1000);
+  } else if (length === 13) {
+    // Unix timestamp in milliseconds
+    date = new Date(timestamp);
+  } else if (length === 16) {
+    // Unix timestamp in microseconds
+    date = new Date(Math.floor(timestamp / 1000));
+  } else if (length === 19) {
+    // Unix timestamp in nanoseconds
+    date = new Date(Math.floor(timestamp / 1000000));
+  } else {
+    return "No date";
+  }
+
+  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: '2-digit', hour: "2-digit" };
+  return date.toLocaleTimeString('en-US', options);
 }

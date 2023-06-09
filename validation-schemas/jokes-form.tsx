@@ -37,12 +37,7 @@ export const JokeSchema = z.object({
 		required_error: "Author is required",
 	  })
 	  .trim()
-	  .min(3, {
-		message: "Author must be at least 3 characters",
-	  })
-	  .max(200, {
-		message: "Author must be at least 5 characters",
-	  }),
+	  .email("Please enter a valid email address"),
 	CreatedAt: z
 	  .number({
 		required_error: "A unix timestamp is required",

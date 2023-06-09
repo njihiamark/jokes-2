@@ -103,7 +103,7 @@ export function JokesForm({
                 <FormItem>
                   <FormLabel>Author</FormLabel>
                   <FormControl>
-                    <Input placeholder="Albert Pike" {...field} />
+                    <Input placeholder="albert@pike.com" {...field} />
                   </FormControl>
                   <FormDescription>Your awesome name or alias</FormDescription>
                   <FormMessage />
