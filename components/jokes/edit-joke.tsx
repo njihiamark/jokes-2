@@ -30,10 +30,16 @@ import { Icons } from "@/components/icons/icons"
 import { JokesForm } from "./jokes-form"
 
 const getJoke = async ({ jokeId }: JokeId) => {
+  try {
   const response = await axios.get(
     `https://retoolapi.dev/zu9TVE/jokes/${jokeId}`
   )
   return response?.data
+  } catch (error) {
+    console.log(error)
+    const data = null
+    return data;
+  }
 }
 
 export function EditJoke({ jokeId }: JokeId) {
@@ -69,7 +75,6 @@ export function EditJoke({ jokeId }: JokeId) {
           title: "Joke updated!",
           description: "Your joke has been updated.",
         })
-        console.log(data.data)
       },
     }
   )
