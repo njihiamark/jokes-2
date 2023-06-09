@@ -33,10 +33,15 @@ export function DataTable<TData, TValue>({
     columns,
     getCoreRowModel: getCoreRowModel(),
 	getPaginationRowModel: getPaginationRowModel(),
+	initialState: {
+        pagination: {
+            pageSize: 5,
+        },
+    },
   })
 
   return (
-    <Card className="w-full sm:w-6/12">
+    <Card className="w-full sm:w-6/12 2xl:w-2/3">
       <CardContent className="p-6">
         <Table>
           <TableHeader>
