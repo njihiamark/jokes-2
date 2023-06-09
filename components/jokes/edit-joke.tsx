@@ -13,6 +13,7 @@ import { UseCase } from "@/types/jokes-form"
 import { convertKeysToPascalCase } from "@/lib/utils"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { JokesFormSkeleton } from "../loading-skeletons/jokes-form"
 import {
   Dialog,
   DialogContent,
@@ -108,7 +109,7 @@ export function EditJoke({ jokeId }: JokeId) {
   if (!isLogin) return <LoginRequired />
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <JokesFormSkeleton />
   }
 
   if (!data) {
