@@ -58,3 +58,17 @@ export function convertUnixTimestamp(timestamp: number): string {
   const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: '2-digit', hour: "2-digit" };
   return date.toLocaleTimeString('en-US', options);
 }
+
+export function getColorByViews(views: number): string {
+  if (views >= 0 && views <= 25) {
+    return "tomato";
+  } else if (views >= 26 && views <= 50) {
+    return "orange";
+  } else if (views >= 51 && views <= 75) {
+    return "yellow";
+  } else if (views >= 76 && views <= 100) {
+    return "green";
+  } else {
+    return "blue";
+  }
+}
