@@ -1,16 +1,25 @@
 "use client"
 
-import { ColumnDef } from "@tanstack/react-table"
 import { JokeData } from "@/validation-schemas/jokes-form"
+import { ColumnDef } from "@tanstack/react-table"
+import Link from "next/link"
 
-import { convertUnixTimestamp } from "@/lib/utils"
-import { getColorByViews } from "@/lib/utils"
-
+import { convertUnixTimestamp, getColorByViews } from "@/lib/utils"
 
 export const columns: ColumnDef<JokeData>[] = [
   {
+    accessorKey: "Id",
+    header: ({ column }) => <></>,
+    cell: ({ row }) => <></>,
+  },
+  {
     accessorKey: "Title",
-    header: "Title",
+	header: ({ column }) => {
+		return <span className="font-medium text-gray-500 hover:underline">Title</span>
+	  },
+    cell: ({ row }) => {
+      return <Link href={`/joke/edit/${row.getValue("Id")}`} className="text-gray-500 hover:underline">{row.getValue("Title")}</Link>
+    },
   },
   {
     accessorKey: "Body",
@@ -23,23 +32,19 @@ export const columns: ColumnDef<JokeData>[] = [
   {
     accessorKey: "CreatedAt",
     header: "CreatedAt",
-	cell: ({ row }) => {
-		return (
-			<span>
-			  {convertUnixTimestamp(row.getValue("CreatedAt"))}
-			</span>
-		)
-	  },
+    cell: ({ row }) => {
+      return <span>{convertUnixTimestamp(row.getValue("CreatedAt"))}</span>
+    },
   },
   {
     accessorKey: "Views",
     header: "Views",
-	cell: ({ row }) => {
-		return (
-			<span style={{color: getColorByViews(row.getValue("Views"))}}>
-			  {row.getValue("Views")}
-			</span>
-		)
-	  },
+    cell: ({ row }) => {
+      return (
+        <span style={{ color: getColorByViews(row.getValue("Views")) }}>
+          {row.getValue("Views")}
+        </span>
+      )
+    },
   },
 ]

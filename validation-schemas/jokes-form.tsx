@@ -1,6 +1,7 @@
 import * as z from "zod"
 
 export const JokeSchema = z.object({
+	Id: z.optional(z.number()),
 	Title: z
 	  .string({
 		required_error: "Title is required",
