@@ -11,7 +11,7 @@ import { convertKeysToPascalCase } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { LoginRequired } from "@/components/auth/login-required"
 import { Icons } from "@/components/icons/icons"
-import { JokesFormSkeleton } from "@/components/loading-skeletons/jokes-form"
+import { JokesTableSkeleton } from "@/components/loading-skeletons/jokes"
 
 import { columns } from "./columns"
 import { DataTable } from "./data-table"
@@ -45,7 +45,7 @@ export function JokesTable() {
   }, [accessToken])
 
   if (isLoading) {
-    return <JokesFormSkeleton />
+    return <JokesTableSkeleton />
   }
 
   const jokesData = convertKeysToPascalCase(data) as JokeData[]
