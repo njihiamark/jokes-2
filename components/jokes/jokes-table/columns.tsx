@@ -16,7 +16,7 @@ export const columns: ColumnDef<JokeData>[] = [
   {
     accessorKey: "Title",
 	header: ({ column }) => {
-		return <span className="font-medium text-gray-500 hover:underline">Title</span>
+		return <span className="font-medium text-gray-500">Title</span>
 	  },
     cell: ({ row }) => {
       return <Link href={`/joke/edit/${row.getValue("Id")}`} className="text-gray-500 hover:underline">{row.getValue("Title")}</Link>
