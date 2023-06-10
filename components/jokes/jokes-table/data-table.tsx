@@ -1,11 +1,15 @@
 "use client"
 
+import { useState } from "react"
+
 import {
   ColumnDef,
   flexRender,
+  SortingState,
   getCoreRowModel,
   useReactTable,
   getPaginationRowModel,
+  getSortedRowModel,
 } from "@tanstack/react-table"
 
 import { Card, CardContent } from "@/components/ui/card"
@@ -28,11 +32,17 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
+	const [sorting, setSorting] = useState<SortingState>([])
   const table = useReactTable({
     data,
     columns,
+	state: {
+		sorting,
+	},
+	onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
 	getPaginationRowModel: getPaginationRowModel(),
+	getSortedRowModel: getSortedRowModel(),
 	initialState: {
         pagination: {
             pageSize: 10,
@@ -41,7 +51,7 @@ export function DataTable<TData, TValue>({
   })
 
   return (
-    <Card className="jokes-data-table w-full sm:w-6/12 2xl:w-2/3">
+    <Card className="jokes-data-table w-full sm:w-2/3">
       <CardContent className="p-6">
         <Table>
           <TableHeader>

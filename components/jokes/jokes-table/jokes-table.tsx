@@ -54,7 +54,7 @@ export function JokesTable() {
     <>
       {isLogin ? (
         <>
-          <div className="mb-4 flex w-full sm:mt-0 sm:w-6/12 2xl:w-2/3">
+          <div className="mb-4 flex w-full sm:mt-0 sm:w-2/3">
             <Button onClick={() => router.push("/joke/create")}>
               <span>Add joke</span>
               <Icons.add_joke className="ml-2 h-5 w-5" />
