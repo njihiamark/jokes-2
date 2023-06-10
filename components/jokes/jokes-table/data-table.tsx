@@ -41,7 +41,7 @@ export function DataTable<TData, TValue>({
   })
 
   return (
-    <Card className="w-full sm:w-6/12 2xl:w-2/3">
+    <Card className="jokes-data-table w-full sm:w-6/12 2xl:w-2/3">
       <CardContent className="p-6">
         <Table>
           <TableHeader>

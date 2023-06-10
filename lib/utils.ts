@@ -12,8 +12,7 @@ export function convertKeysToPascalCase(obj: { [key: string]: any }): { [key: st
 
   if (Array.isArray(obj)) {
     const items = obj.map((item) => convertKeysToPascalCase(item));
-    const sortedItems = items.sort((a, b) => a.CreatedAt - b.CreatedAt);
-    return sortedItems;
+    return items.reverse();
   }
 
   const convertedObj: { [key: string]: any } = {};

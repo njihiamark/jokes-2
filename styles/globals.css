@@ -79,3 +79,42 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+
+.jokes-data-table table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+.jokes-data-table  td {
+    border-right-width: 1px;
+  }
+
+.jokes-data-table th {
+    border-right-width: 1px;
+  }
+
+  /* Remove horizontal borders for all table rows except the last one */
+.jokes-data-table  tr:not(:last-child) td {
+    border-bottom: none;
+  }
+
+  /* Remove vertical border for the last column */
+.jokes-data-table  tr td:last-child {
+    border-right: none;
+  }
+
+.jokes-data-table tr th:last-child {
+    border-right: none;
+  }
+
+.jokes-data-table tr th:first-child {
+    display: none;
+  }
+
+.jokes-data-table tr td:first-child {
+    display: none;
+  }
+
+.jokes-data-table tr {
+    border-bottom-width: 0 !important;
+}

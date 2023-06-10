@@ -77,6 +77,7 @@ export function EditJoke({ jokeId }: JokeId) {
           title: "Joke updated!",
           description: "Your joke has been updated.",
         })
+        router.replace("/jokes")
       },
     }
   )
