@@ -47,6 +47,7 @@ export function EditJoke({ jokeId }: JokeId) {
   const [isLogin, setIsLogin] = useState<boolean>(true)
   const router = useRouter()
   const queryClient = useQueryClient();
+  const editId = jokeId
 
   useEffect(() => {
     setIsLogin(accessToken)
@@ -72,6 +73,7 @@ export function EditJoke({ jokeId }: JokeId) {
       },
       onSuccess: (data) => {
         queryClient.invalidateQueries(["jokes"]);
+        queryClient.invalidateQueries(["joke", editId]);
         toast({
           itemID: "joke-toast",
           title: "Joke updated!",
