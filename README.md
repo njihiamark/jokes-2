@@ -46,8 +46,8 @@ I used the following technologies to help meet the requirements of the assessmen
 - Zustand
     - Used it to help manage client side state, in this case, the mock authentication
     - I really like this library
-    - It feels like ligt weight Redux
-    - You can use some Redux middleware with it to
+    - It feels like light weight Redux
+    - You can use some Redux middleware with it too
     - It doesn't need a Provider!
 
 - Tanstack Table

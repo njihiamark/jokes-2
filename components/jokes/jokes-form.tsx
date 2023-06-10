@@ -105,7 +105,7 @@ export function JokesForm({
                   <FormControl>
                     <Input placeholder="albert@pike.com" {...field} />
                   </FormControl>
-                  <FormDescription>Your awesome name or alias</FormDescription>
+                  <FormDescription>Your email address </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
