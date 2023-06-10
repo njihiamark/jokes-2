@@ -3,7 +3,14 @@ import {
   Moon,
   SunMedium,
   LogOut,
+  LogIn,
   Twitter,
+  ArrowLeft,
+  Trash2 as Trash,
+  Laugh,
+  Edit,
+  Send,
+  LucideMessageSquare,
   type Icon as LucideIcon,
 } from "lucide-react"
 
@@ -14,9 +21,13 @@ export const Icons = {
   moon: Moon,
   twitter: Twitter,
   logout: LogOut,
-  logo: (props: LucideProps) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-laugh"><circle cx="12" cy="12" r="10"/><path d="M18 13a6 6 0 0 1-6 5 6 6 0 0 1-6-5h12Z"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
-  ),
+  login: LogIn,
+  back: ArrowLeft,
+  delete: Trash,
+  logo: Laugh,
+  edit: Edit,
+  send: Send,
+  add_joke: LucideMessageSquare,
   gitHub: (props: LucideProps) => (
     <svg viewBox="0 0 438.549 438.549" {...props}>
       <path
