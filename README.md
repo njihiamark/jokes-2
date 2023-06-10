@@ -77,7 +77,7 @@ Below are the main folders that I used to organize the app:-
             - Contains components icon components
         - jokes/
             - Contains components concerned with the jokes
-        - loading-skeletons
+        - loading-skeletons/
             - Contains components to be displayed during loading
         - nav/
             - Contains components rconcerned with the navigation bar
