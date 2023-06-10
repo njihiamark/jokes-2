@@ -37,10 +37,10 @@ export function JokesTableSkeleton() {
       </div>
       <Card className="w-full sm:w-2/3">
         <CardContent className="p-6">
-          <div className="w-full justify-start space-y-6 text-left">
+          <div className="w-full justify-start space-y-6 p-4 text-left">
             {Array.from({ length: 5 }).map((_, index) => (
               <div className="space-y-2" key={index}>
-                <Skeleton className="h-[17px] w-[30px]" />
+                <Skeleton className="h-[17px] w-full" />
                 <Skeleton className="h-[40px] w-full rounded-md" />
                 <Skeleton className="h-[20px] w-full" />
               </div>
