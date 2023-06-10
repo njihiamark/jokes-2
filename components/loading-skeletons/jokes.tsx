@@ -33,8 +33,7 @@ export function JokesTableSkeleton() {
   return (
     <>
       <div className="mb-4 flex w-full justify-between sm:mt-0 sm:w-2/3">
-        <Skeleton className="h-[40px] w-[92px] rounded-md" />
-        <Skeleton className="h-[40px] w-[92px] rounded-md" />
+        <Skeleton className="h-[40px] w-[118px] rounded-md" />
       </div>
       <Card className="w-full sm:w-2/3">
         <CardContent className="p-6">
@@ -47,8 +46,8 @@ export function JokesTableSkeleton() {
               </div>
             ))}
 
-            <div className="flex justify-end">
-              <Skeleton className="h-[40px] w-[85px]" />
+            <div className="flex justify-center">
+              <Skeleton className="h-[40px] w-[150px]" />
             </div>
           </div>
         </CardContent>
